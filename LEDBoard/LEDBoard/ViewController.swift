@@ -24,8 +24,16 @@ class ViewController: UIViewController {
     //보내기 버튼 액션
     @IBAction func sendTextButtonTapped(_ sender: UIButton) {
         view.endEditing(true)
-        textLabel.text = sendTextBar.text
-        sendTextBar.text = ""
+        
+        
+        var cnt = sendTextBar.text?.count
+        
+        if cnt == 0 || cnt == 1{
+            alert()
+        } else {
+            textLabel.text = sendTextBar.text
+            sendTextBar.text = ""
+        }
     }
     
     //색상 변화 버튼 액션
@@ -87,6 +95,15 @@ class ViewController: UIViewController {
         label.numberOfLines = 0
         label.textAlignment = .center
         
+    }
+    
+    //alert 설정 메서드
+    func alert() {
+        let alert = UIAlertController(title: "2자 이상 입력해주세요", message: nil, preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style:.cancel)
+        alert.addAction(action)
+        
+        present(alert, animated: true)
     }
 
 }
