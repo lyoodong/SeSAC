@@ -140,7 +140,7 @@
         <!--통계보기-->
         <scene sceneID="meq-ya-eMT">
             <objects>
-                <viewController id="HYD-z1-3py" sceneMemberID="viewController">
+                <viewController id="HYD-z1-3py" customClass="StaticsViewController" customModule="Emotion_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iwi-GV-GVA">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -250,6 +250,13 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="통계보기" selectedImage="box" id="wZb-3H-Wbd"/>
+                    <connections>
+                        <outlet property="fifthLabel" destination="NEx-bF-uzA" id="wAb-Fh-8NP"/>
+                        <outlet property="firstLabel" destination="xxc-lz-mfG" id="Ods-VA-BhG"/>
+                        <outlet property="forthLabel" destination="h8p-Lm-HNN" id="cAX-P4-Wm3"/>
+                        <outlet property="secondLabel" destination="6JR-8c-hKb" id="Z4y-JP-ai9"/>
+                        <outlet property="thirdLabel" destination="cqb-UC-ugk" id="R0g-xB-cpH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oo2-7c-3Vc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

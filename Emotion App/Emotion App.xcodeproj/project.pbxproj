@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE2733332A7100A400E7A7FF /* StaticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2733322A7100A400E7A7FF /* StaticsViewController.swift */; };
+		BE2733352A71027F00E7A7FF /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2733342A71027F00E7A7FF /* Emotion.swift */; };
 		BEDB75232A6FB565004FDF7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB75222A6FB565004FDF7D /* AppDelegate.swift */; };
 		BEDB75252A6FB565004FDF7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB75242A6FB565004FDF7D /* SceneDelegate.swift */; };
 		BEDB75272A6FB565004FDF7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB75262A6FB565004FDF7D /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE2733322A7100A400E7A7FF /* StaticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticsViewController.swift; sourceTree = "<group>"; };
+		BE2733342A71027F00E7A7FF /* Emotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
 		BEDB751F2A6FB565004FDF7D /* Emotion App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Emotion App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEDB75222A6FB565004FDF7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEDB75242A6FB565004FDF7D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,10 +63,12 @@
 				BEDB75222A6FB565004FDF7D /* AppDelegate.swift */,
 				BEDB75242A6FB565004FDF7D /* SceneDelegate.swift */,
 				BEDB75262A6FB565004FDF7D /* ViewController.swift */,
+				BE2733322A7100A400E7A7FF /* StaticsViewController.swift */,
 				BEDB75282A6FB565004FDF7D /* Main.storyboard */,
 				BEDB752B2A6FB566004FDF7D /* Assets.xcassets */,
 				BEDB752D2A6FB566004FDF7D /* LaunchScreen.storyboard */,
 				BEDB75302A6FB566004FDF7D /* Info.plist */,
+				BE2733342A71027F00E7A7FF /* Emotion.swift */,
 			);
 			path = "Emotion App";
 			sourceTree = "<group>";
@@ -138,6 +144,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE2733332A7100A400E7A7FF /* StaticsViewController.swift in Sources */,
+				BE2733352A71027F00E7A7FF /* Emotion.swift in Sources */,
 				BEDB75272A6FB565004FDF7D /* ViewController.swift in Sources */,
 				BEDB75232A6FB565004FDF7D /* AppDelegate.swift in Sources */,
 				BEDB75252A6FB565004FDF7D /* SceneDelegate.swift in Sources */,
