@@ -30,7 +30,7 @@ class StaticsViewController: UIViewController {
         //enumerated()를 통해 Emotion의 케이스에 인덱스 부여
         for (index, emotion) in Emotion.allCases.enumerated() {
             //key값으로 활용하기 위해 case string으로 형변환
-            let emotionToString = String(describing: emotion)
+            let emotionToString = "\(emotion)"
             //감정에 해당하는 count 값 result에 할당 후, label배열의 인덱스와 Emotion의 인덱스를 매칭 후, text에 count값 할당.
             if let result = userDefualt.string(forKey: emotionToString) {
                 let labelArray = [firstLabel, secondLabel, thirdLabel, forthLabel, fifthLabel]

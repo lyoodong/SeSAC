@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     //혹시 앱을 실행할 때, 감정 횟수를 전체 초기화하고 싶을 때 viewDidLoad에 실행
     func userDateSet() {
         for emotion in Emotion.allCases {
-            let emotionToString = String(describing: emotion)
+            let emotionToString = "\(emotion)"
             userDefualt.set(zeroDefualt, forKey: emotionToString)
         }
     }
@@ -58,8 +58,8 @@ class ViewController: UIViewController {
     //userdefault에 클릭 횟수 저장, 파라미터로 Emotion과 카운트 횟수 cnt를 받는다.
     func userData(_ emotion:Emotion, _ cnt:Int) {
         
-        //키값으로 활용하기 위해 case 스트링으로 반환
-        let emotionToString = String(describing: emotion )
+        //키값으로 활용하기 위해 case 스트링으로 변환
+        let emotionToString = "\(emotion)"
         
         //emotionToString 키값에 해당하는 value를 cnt로 할당
         userDefualt.set(cnt, forKey: emotionToString)
