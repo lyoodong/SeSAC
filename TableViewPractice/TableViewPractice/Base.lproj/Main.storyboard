@@ -163,20 +163,24 @@
                             </tableViewSection>
                             <tableViewSection footerTitle="이 기기에서 집중 모드를 켜면 사용자의 다른 기기에서도 집중모드가 켜집니다." id="JjJ-4q-xPq">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="w8b-2c-sDh" style="IBUITableViewCellStyleDefault" id="Z3M-C7-cWN">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Z3M-C7-cWN">
                                         <rect key="frame" x="20" y="278.00000190734863" width="353" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z3M-C7-cWN" id="opf-VJ-I44">
                                             <rect key="frame" x="0.0" y="0.0" width="322.66666666666669" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="모든 기기에서 공유" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w8b-2c-sDh">
-                                                    <rect key="frame" x="20" y="0.0" width="294.66666666666669" height="43.666667938232422"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="모든 기기에서 공유" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HIX-10-5HP">
+                                                    <rect key="frame" x="20" y="11" width="127" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BDO-zV-f2A">
+                                                    <rect key="frame" x="265" y="6" width="49" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </switch>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.109803915" green="0.109803915" blue="0.1176470518" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -382,6 +386,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="8uh-kY-oo7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="t8V-18-ApF">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
