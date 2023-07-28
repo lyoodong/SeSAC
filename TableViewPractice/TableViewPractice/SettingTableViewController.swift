@@ -58,13 +58,15 @@ class SettingTableViewController: UITableViewController {
             return UITableViewCell()
         }
         
+        let row = indexPath.row
+        
         switch indexPath.section {
         case 0:
-            cell.textLabel?.text = wholeSet[indexPath.row]
+            cell.textLabel?.text = wholeSet[row]
         case 1:
-            cell.textLabel?.text = personalSet[indexPath.row]
+            cell.textLabel?.text = personalSet[row]
         case 2:
-            cell.textLabel?.text = etcSet[indexPath.row]
+            cell.textLabel?.text = etcSet[row]
         default:
             cell.textLabel?.text = ""
         }
