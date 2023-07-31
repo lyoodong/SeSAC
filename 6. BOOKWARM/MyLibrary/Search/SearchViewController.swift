@@ -35,5 +35,3 @@ class SearchViewController: UIViewController {
     
 
 }
-
-CGSize(width: <#T##Double#>, height: <#T##Double#>)
