@@ -20,7 +20,7 @@ class MainCollectionViewController: UICollectionViewController {
     @IBAction func searchButtonTapped(_ sender: UIBarButtonItem) {
         
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "SearchViewController")
+        let vc = sb.instantiateViewController(withIdentifier: SearchViewController.IDF)
         
         let nav = UINavigationController(rootViewController: vc )
         nav.modalTransitionStyle = .coverVertical
@@ -70,7 +70,7 @@ class MainCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        guard let vc = sb.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
+        guard let vc = sb.instantiateViewController(withIdentifier:DetailViewController.IDF ) as? DetailViewController else { return }
         
         vc.movieTitle = movieData.movie[indexPath.row].title
         

@@ -9,6 +9,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    static let IDF = "DetailViewController"
+    
     lazy var movieTitle:String = ""
 
     override func viewDidLoad() {

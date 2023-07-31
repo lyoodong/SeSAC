@@ -9,6 +9,8 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    static let IDF = "SearchViewController"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -33,3 +35,5 @@ class SearchViewController: UIViewController {
     
 
 }
+
+CGSize(width: <#T##Double#>, height: <#T##Double#>)
