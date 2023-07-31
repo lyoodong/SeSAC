@@ -6,6 +6,6 @@
 | [TableView practice](https://github.com/lyoodong/SeSAC/tree/main/TableViewPractice)  | UserDefaults, tableView, storyboard, IndexPath|
 | [MovieTableView practice](https://github.com/lyoodong/SeSAC/tree/main/TableViewPractice)  | UserDefaults, tableView, storyboard, IndexPath|
 | [MovieTableView practice](https://github.com/lyoodong/SeSAC/tree/main/TableViewPractice)  | UserDefaults, tableView, storyboard, IndexPath|
-| [BOOKWARM](https://github.com/lyoodong/SeSAC/tree/main/MyLibrary)  | CollectionView, transition, storyboard, Xib|
+| [BOOKWARM](https://github.com/lyoodong/SeSAC/tree/main/MyLibrary)  | CollectionView, transition, storyboard, Xib, customcell|
 
 
