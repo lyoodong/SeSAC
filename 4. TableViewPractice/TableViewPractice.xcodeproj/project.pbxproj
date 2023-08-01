@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BE522A782A72956A00E41A32 /* PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE522A772A72956A00E41A32 /* PropertyWrapper.swift */; };
+		BE85075E2A789B47009ADAD6 /* Setting2TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE85075D2A789B47009ADAD6 /* Setting2TableViewController.swift */; };
 		BEE49E9B2A724E6F00F0E4AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE49E9A2A724E6F00F0E4AA /* AppDelegate.swift */; };
 		BEE49E9D2A724E6F00F0E4AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE49E9C2A724E6F00F0E4AA /* SceneDelegate.swift */; };
 		BEE49E9F2A724E6F00F0E4AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE49E9E2A724E6F00F0E4AA /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		BE522A772A72956A00E41A32 /* PropertyWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyWrapper.swift; sourceTree = "<group>"; };
+		BE85075D2A789B47009ADAD6 /* Setting2TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting2TableViewController.swift; sourceTree = "<group>"; };
 		BEE49E972A724E6F00F0E4AA /* TableViewPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEE49E9A2A724E6F00F0E4AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEE49E9C2A724E6F00F0E4AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				BEE49EB02A725E7D00F0E4AA /* SettingTableViewController.swift */,
 				BEE49EB22A726F6900F0E4AA /* ShoppingTableViewController.swift */,
 				BE522A772A72956A00E41A32 /* PropertyWrapper.swift */,
+				BE85075D2A789B47009ADAD6 /* Setting2TableViewController.swift */,
 				BEE49EA02A724E6F00F0E4AA /* Main.storyboard */,
 				BEE49EA32A724E7000F0E4AA /* Assets.xcassets */,
 				BEE49EA52A724E7000F0E4AA /* LaunchScreen.storyboard */,
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEE49E9F2A724E6F00F0E4AA /* ViewController.swift in Sources */,
+				BE85075E2A789B47009ADAD6 /* Setting2TableViewController.swift in Sources */,
 				BEE49E9B2A724E6F00F0E4AA /* AppDelegate.swift in Sources */,
 				BE522A782A72956A00E41A32 /* PropertyWrapper.swift in Sources */,
 				BEE49E9D2A724E6F00F0E4AA /* SceneDelegate.swift in Sources */,

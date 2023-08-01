@@ -7,6 +7,12 @@ struct Movie {
     let runtime: Int
     let overview: String
     let rate: Double
+    
+    var smallDetail:String {
+        get {
+            return "\(releaseDate) | \(runtime) | \(rate)"
+        }
+    }
 }
 
 struct MovieInfo {

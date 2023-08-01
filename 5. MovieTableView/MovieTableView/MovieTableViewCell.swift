@@ -14,8 +14,6 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet var posterImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var releaseDateLabel: UILabel!
-    @IBOutlet var runtimeLabel: UILabel!
-    @IBOutlet var rateLabel: UILabel!
     @IBOutlet var summaryLabel: UILabel!
     
     func propertyToString(_ label:Any) -> String {
@@ -27,9 +25,7 @@ class MovieTableViewCell: UITableViewCell {
         
         posterImageView.image = UIImage(named: "\(row.title)")
         titleLabel.text = row.title
-        releaseDateLabel.text = row.releaseDate
-        runtimeLabel.text = propertyToString(row.runtime)
-        rateLabel.text = propertyToString(row.rate)
+        releaseDateLabel.text = row.smallDetail
         summaryLabel.text = row.overview
         
         print(row.title)
