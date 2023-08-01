@@ -9,7 +9,12 @@ import UIKit
 
 class MainCollectionViewController: UICollectionViewController {
     
-    let movieData = MovieInfo()
+    var movieData = MovieInfo() {
+        didSet {
+            collectionView.reloadData()
+            print("뷰 리로드")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +68,9 @@ class MainCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.IDF, for: indexPath) as! MainCollectionViewCell
         
         let row = movieData.movie[indexPath.row]
-        cell.cellSet(row: row)
+        let index = indexPath.row
+        cell.cellSet(row: row,index: index)
+        cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         
         return cell
     }
@@ -72,10 +79,21 @@ class MainCollectionViewController: UICollectionViewController {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         guard let vc = sb.instantiateViewController(withIdentifier:DetailViewController.IDF ) as? DetailViewController else { return }
         
-        vc.movieTitle = movieData.movie[indexPath.row].title
+        let row = movieData.movie[indexPath.row]
+        
+        vc.movieInfo.movieTitle = row.title
+        vc.movieInfo.rate = row.rate
+        vc.movieInfo.overview = row.overview
         
         navigationController?.pushViewController(vc, animated: true)
     }
-
+    
+    @objc
+    func likeButtonTapped(_ sender:UIButton) {
+        let index = sender.tag
+        movieData.movie[index].like.toggle()
+        print(movieData.movie[index].like)
+    }
+    
 }
 

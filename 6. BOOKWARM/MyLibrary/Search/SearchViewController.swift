@@ -23,7 +23,6 @@ class SearchViewController: UIViewController {
         let backbutton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem = backbutton
         backbutton.tintColor = .black
-        
     }
     
     @objc
