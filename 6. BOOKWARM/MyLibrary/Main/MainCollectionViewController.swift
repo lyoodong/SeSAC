@@ -8,7 +8,7 @@
 import UIKit
 
 class MainCollectionViewController: UICollectionViewController {
-    
+
     var movieData = MovieInfo() {
         didSet {
             collectionView.reloadData()
@@ -80,10 +80,7 @@ class MainCollectionViewController: UICollectionViewController {
         guard let vc = sb.instantiateViewController(withIdentifier:DetailViewController.IDF ) as? DetailViewController else { return }
         
         let row = movieData.movie[indexPath.row]
-        
-        vc.movieInfo.movieTitle = row.title
-        vc.movieInfo.rate = row.rate
-        vc.movieInfo.overview = row.overview
+        vc.movieInfo = row
         
         navigationController?.pushViewController(vc, animated: true)
     }

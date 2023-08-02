@@ -17,6 +17,13 @@ class MainCollectionViewCell: UICollectionViewCell {
     @IBOutlet var posterImageView: UIImageView!
     @IBOutlet var likeButton: UIButton!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        likeButton.tintColor = .systemPink
+        likeButton.setTitle("", for: .normal)
+        layer.cornerRadius = 10
+    }
+    
     func cellSet(row:Movie, index:Int) {
         let movieTitle = row.title
         
@@ -24,12 +31,8 @@ class MainCollectionViewCell: UICollectionViewCell {
         rateLabel.text = "\(row.rate)"
         posterImageView.image = UIImage(named: movieTitle)
         backgroundColor = row.color
-        layer.cornerRadius = 10
-        
         likeButton.tag = index
-        likeButton.setTitle("", for: .normal)
-        likeButton.tintColor = .systemPink
-
+    
         let defaultImage = UIImage(systemName: "heart")
         let fillImage = UIImage(systemName: "heart.fill")
         if row.like == false  {

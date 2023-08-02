@@ -7,18 +7,14 @@
 
 import UIKit
 
-struct MovieInfoDetail {
-    var movieTitle:String
-    var rate:Double
-    var overview:String
-}
+
 
 class DetailViewController: UIViewController {
     
     static let IDF = "DetailViewController"
     
     lazy var movieTitle:String = ""
-    var movieInfo = MovieInfoDetail(movieTitle: "", rate: 0, overview: "")
+    var movieInfo = Movie(title: "", releaseDate: "", runtime: 0, overview: "", rate: 0)
     
     @IBOutlet var movieImage: UIImageView!
     @IBOutlet var titleLabel: UILabel!
@@ -28,15 +24,17 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = movieInfo.movieTitle
+        title = movieInfo.title
         detailPageSet()
     }
     
     func detailPageSet() {
-        movieImage.image = UIImage(named: "\(movieInfo.movieTitle)")
-        titleLabel.text = movieInfo.movieTitle
-        rateLabel.text = movieInfo.movieTitle
+    
+        movieImage.image = UIImage(named: "\(movieInfo.title)")
+        titleLabel.text = movieInfo.title
+        rateLabel.text = "\(movieInfo.rate)"
         overViewLabel.text = movieInfo.overview
     }
     
 }
+
