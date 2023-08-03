@@ -8,14 +8,16 @@
 import UIKit
 
 class MainCollectionViewCell: UICollectionViewCell {
-    
-    
+    //MARK: - property
     static let IDF = "MainCollectionViewCell"
     
+    //MARK: - UI porperety
     @IBOutlet var titleLable: UILabel!
     @IBOutlet var rateLabel: UILabel!
     @IBOutlet var posterImageView: UIImageView!
     @IBOutlet var likeButton: UIButton!
+    
+    //MARK: - define method
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -11,8 +11,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let width = (self.view.bounds.width - 36) / 2
-        print(width)
+    
     }
 
 }
