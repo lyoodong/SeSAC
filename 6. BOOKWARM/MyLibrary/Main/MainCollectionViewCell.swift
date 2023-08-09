@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MainCollectionViewCell: UICollectionViewCell {
     //MARK: - property
@@ -13,7 +14,6 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI porperety
     @IBOutlet var titleLable: UILabel!
-    @IBOutlet var rateLabel: UILabel!
     @IBOutlet var posterImageView: UIImageView!
     @IBOutlet var likeButton: UIButton!
     
@@ -26,12 +26,13 @@ class MainCollectionViewCell: UICollectionViewCell {
         layer.cornerRadius = 10
     }
     
-    func cellSet(row:Movie, index:Int) {
-        let movieTitle = row.title
+    func cellSet(row:Book, index:Int) {
+        let bookTitle = 
         
-        titleLable.text = movieTitle
-        rateLabel.text = "\(row.rate)"
-        posterImageView.image = UIImage(named: movieTitle)
+        titleLable.text = row.title
+        
+        let url = URL(string: row.thumbnail)
+        posterImageView.kf.setImage(with: url)
         backgroundColor = row.color
         likeButton.tag = index
     

@@ -65,10 +65,7 @@ class LookAroundViewController: UIViewController {
         view.dataSource = self
         view.tableHeaderView = tableViewHeaderView
         view.rowHeight = (popularTableView.bounds.height - tableViewHeaderView.bounds.height) / 4
-        
     }
-
-
 }
 
 //MARK: - extension
@@ -93,7 +90,7 @@ extension LookAroundViewController: UITableViewDelegate, UITableViewDataSource, 
         let vc = self.storyboard?.instantiateViewController(withIdentifier: DetailViewController.IDF) as! DetailViewController
         
         let row = movieinfo.movie[indexPath.row]
-        vc.movieInfo = row
+//        vc.movieInfo = row
         
         present(vc, animated: true)
     }
@@ -117,7 +114,7 @@ extension LookAroundViewController: UITableViewDelegate, UITableViewDataSource, 
         let vc = self.storyboard?.instantiateViewController(withIdentifier: DetailViewController.IDF) as! DetailViewController
         
         let row = movieinfo.movie[indexPath.row]
-        vc.movieInfo = row
+//        vc.movieInfo = row
         
         present(vc, animated: true)
     }

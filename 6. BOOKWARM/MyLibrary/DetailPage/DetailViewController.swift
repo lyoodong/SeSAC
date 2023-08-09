@@ -5,28 +5,29 @@
 //  Created by Dongwan Ryoo on 2023/07/31.
 //
 
+import Kingfisher
 import UIKit
-
-
 
 class DetailViewController: UIViewController {
     //MARK: - property
     static let IDF = "DetailViewController"
     lazy var movieTitle:String = ""
-    lazy var movieInfo = Movie(title: "", releaseDate: "", runtime: 0, overview: "", rate: 0)
     lazy var placeholderText:String = "텍스트 입력"
+    var bookList:Book?
     
     //MARK: - UI porperety
-    @IBOutlet var movieImage: UIImageView!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var rateLabel: UILabel!
-    @IBOutlet var overViewLabel: UILabel!
+    @IBOutlet var bookImage: UIImageView!
+    @IBOutlet var bookTitleLabel: UILabel!
+    @IBOutlet var bookRelatedInfo: UILabel!
+    @IBOutlet var bookDateLabel: UILabel!
+    @IBOutlet var bookPriceLabel: UILabel!
+    @IBOutlet var bookOverViewLabel: UILabel!
     @IBOutlet var memoTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = movieInfo.title
+        title = bookList?.title
         detailPageSet()
         
         memoTextView.delegate = self
@@ -40,10 +41,13 @@ class DetailViewController: UIViewController {
     
     func detailPageSet() {
     
-        movieImage.image = UIImage(named: "\(movieInfo.title)")
-        titleLabel.text = movieInfo.title
-        rateLabel.text = "\(movieInfo.rate)"
-        overViewLabel.text = movieInfo.overview
+        let url = URL(string: bookList!.thumbnail)
+        bookImage.kf.setImage(with: url)
+        bookTitleLabel.text = bookList?.title
+        bookDateLabel.text = bookList?.datetime
+        bookPriceLabel.text = bookList?.sale_price
+        bookRelatedInfo.text = bookList?.bookRelatedInfo
+        bookOverViewLabel.text = bookList?.contents
     }
     
 }

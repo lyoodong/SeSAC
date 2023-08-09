@@ -22,12 +22,6 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoc-Hc-pNO">
-                        <rect key="frame" x="16" y="147" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HVt-lu-dfU">
                         <rect key="frame" x="79" y="58" width="85" height="122"/>
                     </imageView>
@@ -43,19 +37,16 @@
             <constraints>
                 <constraint firstItem="3t2-zV-C4X" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="09c-di-csR"/>
                 <constraint firstAttribute="trailing" secondItem="HVt-lu-dfU" secondAttribute="trailing" constant="16" id="1oe-M6-Lyi"/>
-                <constraint firstItem="xoc-Hc-pNO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="2pV-QO-j9F"/>
                 <constraint firstItem="3t2-zV-C4X" firstAttribute="top" secondItem="mmh-BP-GpL" secondAttribute="bottom" constant="32" id="9jY-hy-0Pm"/>
                 <constraint firstItem="HVt-lu-dfU" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="79" id="9vu-l4-bMn"/>
                 <constraint firstItem="mmh-BP-GpL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="CZ6-LA-ehn"/>
                 <constraint firstItem="HVt-lu-dfU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="58" id="OYi-5i-cj1"/>
                 <constraint firstAttribute="bottom" secondItem="HVt-lu-dfU" secondAttribute="bottom" id="d3U-TZ-Zi8"/>
-                <constraint firstAttribute="bottom" secondItem="xoc-Hc-pNO" secondAttribute="bottom" constant="12" id="iWG-sz-IOT"/>
                 <constraint firstItem="mmh-BP-GpL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="mGS-f6-NLb"/>
             </constraints>
             <connections>
                 <outlet property="likeButton" destination="3t2-zV-C4X" id="7RX-lq-k8n"/>
                 <outlet property="posterImageView" destination="HVt-lu-dfU" id="NLu-Kz-e10"/>
-                <outlet property="rateLabel" destination="xoc-Hc-pNO" id="PtW-Fe-sFZ"/>
                 <outlet property="titleLable" destination="mmh-BP-GpL" id="Me8-SU-vxw"/>
             </connections>
             <point key="canvasLocation" x="47.328244274809158" y="20.422535211267608"/>
