@@ -10,18 +10,14 @@ import UIKit
 
 class MainCollectionViewController: UICollectionViewController {
     //MARK: - property
-    var movieData = MovieInfo() {
-        didSet {
-            collectionView.reloadData()
-            print("뷰 리로드")
-        }
-    }
-    
+  
     var bookList:[Book] = [] {
         didSet {
             collectionView.reloadData()
         }
     }
+    
+    var page = 1
     //MARK: - UI porperety
     let searchBar = UISearchBar()
     
@@ -31,6 +27,7 @@ class MainCollectionViewController: UICollectionViewController {
         setSearchBar(searchBar)
         setCollectionViewlayout()
         registerCell()
+        self.collectionView.prefetchDataSource = self
         
     }
     
@@ -78,7 +75,8 @@ class MainCollectionViewController: UICollectionViewController {
     
     func showAlert(_ title:String) {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        let action = UIAlertAction(title: "확인", style: .cancel) { _ in self.movieData = MovieInfo()}
+        let action = UIAlertAction(title: "확인", style: .cancel)
+//        { _ in self.movieData = MovieInfo()}
         
         alert.addAction(action)
         
@@ -86,10 +84,10 @@ class MainCollectionViewController: UICollectionViewController {
         searchBar.text = ""
     }
     
-    func callRequest(query:String) {
+    func callRequest(query:String, page:Int) {
         guard let text = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {return}
         
-        let url = "https://dapi.kakao.com/v3/search/book?query=\(text)"
+        let url = "https://dapi.kakao.com/v3/search/book?query=\(text)&page=\(page)&size=30"
         
         AF.request(url, method: .get, headers: APIKey.kakao).validate().responseJSON { response in
             switch response.result {
@@ -113,8 +111,8 @@ class MainCollectionViewController: UICollectionViewController {
                     self.bookList.append(book)
                 }
                 
-                print(self.bookList)
-            
+                self.collectionView.reloadData()
+
             case .failure(let error):
                 print(error)
             }
@@ -135,22 +133,16 @@ extension MainCollectionViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
-        callRequest(query: searchText)
-        print("검색 성공")
-        
+        bookList.removeAll()
+        page = 1
+        callRequest(query: searchText, page: page)
+
         
     }
     
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        //영어와 달리 한글을 한 글자 단위로 검색하는데 실패 -> 오류 해결 요망
-//        if searchBar.text?.isEmpty == true {
-//            movieData = MovieInfo()
-//        }
-//    }
-    
 }
 
-extension MainCollectionViewController  {
+extension MainCollectionViewController:UICollectionViewDataSourcePrefetching  {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         
@@ -183,6 +175,17 @@ extension MainCollectionViewController  {
         
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if bookList.count - 1 == indexPath.row && page < 50 {
+                page += 1
+                callRequest(query: searchBar.text!,page: page)
+            }
+        }
+    }
+    
+    
 }
 
 
