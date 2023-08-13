@@ -73,8 +73,10 @@ class ViewController: UIViewController {
     //언어 감지 메서드
     func callRequestDetectLangs(){
         
+        
         let url = "https://openapi.naver.com/v1/papago/detectLangs"
         //post는 파라미터 형태로 보내줘야한다
+        
         let prameter:Parameters = [
             "query" : inputTextView.text ?? ""
         ]
