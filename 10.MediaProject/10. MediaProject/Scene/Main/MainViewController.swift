@@ -7,13 +7,12 @@
 
 import Alamofire
 import Kingfisher
-import SwiftyJSON
 import UIKit
 
 class MainViewController: UIViewController {
 
     //MARK: - Property
-    var movieList:[Movie] = []
+    var movie:TMDBData?
     
     //MARK: - UI porperty
     @IBOutlet var titleLabel: UILabel!
@@ -22,8 +21,15 @@ class MainViewController: UIViewController {
     //MARK: - Define method
     override func viewDidLoad() {
         super.viewDidLoad()
-        callRequest()
+        callNetwork()
         trendTableViewSet(trendTableView)
+    }
+    
+    func callNetwork() {
+        APIManager.shared.callRequestCodableMovie { TMDBData in
+            self.movie = TMDBData
+            self.trendTableView.reloadData()
+        }
     }
     
     func trendTableViewSet(_ tableView:UITableView) {
@@ -38,51 +44,59 @@ class MainViewController: UIViewController {
         trendTableView.register(nib, forCellReuseIdentifier: MainTableViewCell.IDF)
     }
     
-    func callRequest() {
-        
-        let url = "https://api.themoviedb.org/3/trending/movie/week?api_key=\(APIKey.key)"
-        
-        AF.request(url, method: .get).validate().responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                let result = json["results"].arrayValue
-                
-                for item in result {
-                    let id = item["id"].intValue
-                    let backdropPath = item["backdrop_path"].stringValue
-                    let posterPath = item["poster_path"].stringValue
-                    let title = item["title"].stringValue
-                    let overview = item["overview"].stringValue
-                    let releaseDate = item["release_date"].stringValue
-                    let voteAverage = item["vote_average"].doubleValue
-                    
-                    let movie = Movie(id: id, backdropPath: backdropPath, title: title, overview: overview, posterPath: posterPath, releaseDate: releaseDate, voteAverage: voteAverage)
-                    
-                    self.movieList.append(movie)
-                }
-            
-                self.trendTableView.reloadData()
-
-            case .failure(let error):
-                print(error)
-            }
-            
-        }
-        
-    }
+    
+//    func callRequest() {
+//
+//        let url = "https://api.themoviedb.org/3/trending/movie/week?api_key=\(APIKey.key)"
+//
+//        AF.request(url, method: .get).validate().responseJSON { response in
+//            switch response.result {
+//            case .success(let value):
+//                let json = JSON(value)
+//                print(json)
+//
+//                let result = json["results"].arrayValue
+//
+//                for item in result {
+//                    let id = item["id"].intValue
+//                    let backdropPath = item["backdrop_path"].stringValue
+//                    let posterPath = item["poster_path"].stringValue
+//                    let title = item["title"].stringValue
+//                    let overview = item["overview"].stringValue
+//                    let releaseDate = item["release_date"].stringValue
+//                    let voteAverage = item["vote_average"].doubleValue
+//                    let genre = item["genre_ids"].arrayValue
+//
+//                    let movie = Movie(id: id, backdropPath: backdropPath, title: title, overview: overview, posterPath: posterPath, releaseDate: releaseDate, voteAverage: voteAverage)
+//
+//                    self.movieList.append(movie)
+//
+//                }
+//
+//                self.trendTableView.reloadData()
+//
+//            case .failure(let error):
+//                print(error)
+//            }
+//
+//        }
+//
+//    }
     
 }
 
 extension MainViewController:UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movieList.count
+//        return movieList.count
+        return movie?.results.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.IDF) as! MainTableViewCell
-    
-        let row = movieList[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.IDF) as? MainTableViewCell
+        else { return UITableViewCell()}
+        
+        guard let movieData = movie else { return UITableViewCell() }
+        let row = movieData.results[indexPath.row]
         
         if let url = URL(string: "https://image.tmdb.org/t/p/original/" + row.posterPath ) {
             DispatchQueue.global().async {
@@ -116,7 +130,9 @@ extension MainViewController:UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(identifier: DetailViewController.IDF) as! DetailViewController
-        vc.movie = movieList[indexPath.row]
+        
+        guard let movieData = movie else { return }
+        vc.movie = movieData.results[indexPath.row]
         
         navigationController?.pushViewController(vc, animated: true)
         

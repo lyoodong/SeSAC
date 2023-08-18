@@ -10,8 +10,8 @@ import SwiftyJSON
 import UIKit
 
 class DetailViewController: UIViewController {
-    var movie:Movie?
-    var castingList:[Cast] = []
+    var movie:Result?
+    var castingList:CastData?
 
     //MARK: - UI porperty
     @IBOutlet var titleImageView: UIImageView!
@@ -24,9 +24,9 @@ class DetailViewController: UIViewController {
     //MARK: - Define method
     override func viewDidLoad() {
         super.viewDidLoad()
+        callrequest()
         castingCollectionViewSet(castingCollectionView)
         uiSet()
-        callRequest(movie!.id)
     }
     
     func castingCollectionViewSet(_ collectionView:UICollectionView) {
@@ -65,33 +65,11 @@ class DetailViewController: UIViewController {
     
     }
     
-    func callRequest(_ movie_id:Int) {
-    
-        let url = "https://api.themoviedb.org/3/movie/\(movie_id)/credits?api_key=\(APIKey.key)"
-        
-        AF.request(url, method: .get).validate().responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                
-                let castAry = json["cast"].arrayValue
-                
-                for item in castAry{
-                    let originalName = item["original_name"].stringValue
-                    let profilePath = item["profile_path"].stringValue
-                    
-                    let casting = Cast(originalName: originalName, profilePath: profilePath)
-                    self.castingList.append(casting)
-                    self.castingCollectionView.reloadData()
-                }
-                
-                print("JSON: \(json)")
-            case .failure(let error):
-                print(error)
-            }
-            
+    func callrequest() {
+        APIManager.shared.callRequestCadableCast(movie!.id) { CastData in
+            self.castingList = CastData
+            self.castingCollectionView.reloadData()
         }
-        
     }
 
 }
@@ -99,20 +77,24 @@ class DetailViewController: UIViewController {
 extension DetailViewController:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let castinglist = castingList else { return 0 }
         
-        return castingList.count
+        return castinglist.cast.count
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCollectionViewCell.IDF, for: indexPath) as! DetailCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCollectionViewCell.IDF, for: indexPath) as? DetailCollectionViewCell
+        else { return UICollectionViewCell()}
         
-        if let url = URL(string: "https://image.tmdb.org/t/p/original/" + castingList[indexPath.row].profilePath) {
+        guard let castinglist = castingList else { return UICollectionViewCell() }
+        
+        if let url = URL(string: "https://image.tmdb.org/t/p/original/" + (castinglist.cast[indexPath.row].profilePath ?? "")) {
             DispatchQueue.global().async {
                 if let data = try? Data(contentsOf: url) {
                     DispatchQueue.main.async {
                         cell.castImageView.image = UIImage(data: data)
-                        cell.castNameLabel.text = self.castingList[indexPath.row].originalName
+                        cell.castNameLabel.text = castinglist.cast[indexPath.row].originalName
                     }
                 }
             }

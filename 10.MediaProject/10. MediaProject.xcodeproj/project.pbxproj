@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE2F347F2A8F5D85000385E5 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2F347E2A8F5D85000385E5 /* APIManager.swift */; };
 		BEA65CA52A867FEF00311786 /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA65CA42A867FEF00311786 /* ReusableViewProtocol.swift */; };
 		BEA65CA72A8685EA00311786 /* Ext + UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA65CA62A8685EA00311786 /* Ext + UIFont.swift */; };
 		BEA65CA92A8686DE00311786 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA65CA82A8686DE00311786 /* Model.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE2F347E2A8F5D85000385E5 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		BEA65CA42A867FEF00311786 /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
 		BEA65CA62A8685EA00311786 /* Ext + UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext + UIFont.swift"; sourceTree = "<group>"; };
 		BEA65CA82A8686DE00311786 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			children = (
 				BEA65CA82A8686DE00311786 /* Model.swift */,
 				BEA65CAA2A868BC700311786 /* APIKey.swift */,
+				BE2F347E2A8F5D85000385E5 /* APIManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				BEB8D78C2A8654030095E23C /* MainViewController.swift in Sources */,
 				BEB8D7882A8654030095E23C /* AppDelegate.swift in Sources */,
 				BEB8D7AC2A86776B0095E23C /* DetailViewController.swift in Sources */,
+				BE2F347F2A8F5D85000385E5 /* APIManager.swift in Sources */,
 				BEB8D7A32A8676EB0095E23C /* MainTableViewCell.swift in Sources */,
 				BEA65CA52A867FEF00311786 /* ReusableViewProtocol.swift in Sources */,
 				BEB8D78A2A8654030095E23C /* SceneDelegate.swift in Sources */,
