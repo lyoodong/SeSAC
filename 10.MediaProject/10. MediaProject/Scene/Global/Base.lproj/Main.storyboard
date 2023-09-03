@@ -37,6 +37,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHN-mO-L28">
+                                <rect key="frame" x="302" y="106" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -51,6 +57,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="jfq-Ka-8PH"/>
                     <connections>
+                        <outlet property="mediaButtonType" destination="qHN-mO-L28" id="n8U-CZ-zwc"/>
                         <outlet property="titleLabel" destination="0vw-AY-pFY" id="Ayk-4e-d3s"/>
                         <outlet property="trendTableView" destination="YI8-vU-yC5" id="hzg-B1-FHj"/>
                     </connections>

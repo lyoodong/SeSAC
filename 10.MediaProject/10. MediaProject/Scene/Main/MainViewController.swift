@@ -17,19 +17,29 @@ class MainViewController: UIViewController {
     //MARK: - UI porperty
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var trendTableView: UITableView!
+    @IBOutlet var mediaButtonType: UIButton!
     
     //MARK: - Define method
     override func viewDidLoad() {
         super.viewDidLoad()
         callNetwork()
         trendTableViewSet(trendTableView)
+        mediaButtonType.addTarget(self, action: #selector(mediaButtonTypeClicked), for: .touchUpInside)
+    }
+    
+    @objc
+    func mediaButtonTypeClicked() {
+        let alert = UIAlertController(title: "유형을 선택하세요.", message: nil, preferredStyle: .actionSheet)
     }
     
     func callNetwork() {
-        APIManager.shared.callRequestCodableMovie { TMDBData in
+        APIManager.shared.callRequestCodable(videoType: .movie) { TMDBData in
             self.movie = TMDBData
-            self.trendTableView.reloadData()
+            DispatchQueue.main.async {
+                self.trendTableView.reloadData()
+            }
         }
+        
     }
     
     func trendTableViewSet(_ tableView:UITableView) {
@@ -44,50 +54,10 @@ class MainViewController: UIViewController {
         trendTableView.register(nib, forCellReuseIdentifier: MainTableViewCell.IDF)
     }
     
-    
-//    func callRequest() {
-//
-//        let url = "https://api.themoviedb.org/3/trending/movie/week?api_key=\(APIKey.key)"
-//
-//        AF.request(url, method: .get).validate().responseJSON { response in
-//            switch response.result {
-//            case .success(let value):
-//                let json = JSON(value)
-//                print(json)
-//
-//                let result = json["results"].arrayValue
-//
-//                for item in result {
-//                    let id = item["id"].intValue
-//                    let backdropPath = item["backdrop_path"].stringValue
-//                    let posterPath = item["poster_path"].stringValue
-//                    let title = item["title"].stringValue
-//                    let overview = item["overview"].stringValue
-//                    let releaseDate = item["release_date"].stringValue
-//                    let voteAverage = item["vote_average"].doubleValue
-//                    let genre = item["genre_ids"].arrayValue
-//
-//                    let movie = Movie(id: id, backdropPath: backdropPath, title: title, overview: overview, posterPath: posterPath, releaseDate: releaseDate, voteAverage: voteAverage)
-//
-//                    self.movieList.append(movie)
-//
-//                }
-//
-//                self.trendTableView.reloadData()
-//
-//            case .failure(let error):
-//                print(error)
-//            }
-//
-//        }
-//
-//    }
-    
 }
 
 extension MainViewController:UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return movieList.count
         return movie?.results.count ?? 0
     }
     
