@@ -21,6 +21,7 @@ class MainViewController: UIViewController {
     
     //MARK: - Define method
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         callNetwork()
         trendTableViewSet(trendTableView)
