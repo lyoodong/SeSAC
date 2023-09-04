@@ -27,8 +27,6 @@ class MainCollectionViewCell: UICollectionViewCell {
     }
     
     func cellSet(row:Book, index:Int) {
-        let bookTitle = 
-        
         titleLable.text = row.title
         
         let url = URL(string: row.thumbnail)

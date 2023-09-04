@@ -7,6 +7,8 @@
 import Alamofire
 import SwiftyJSON
 import UIKit
+import RealmSwift
+
 
 class MainCollectionViewController: UICollectionViewController {
     //MARK: - property
@@ -28,7 +30,11 @@ class MainCollectionViewController: UICollectionViewController {
         setCollectionViewlayout()
         registerCell()
         self.collectionView.prefetchDataSource = self
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        callRecentSearchList()
     }
     
     @IBAction func searchButtonTapped(_ sender: UIBarButtonItem) {
@@ -76,12 +82,21 @@ class MainCollectionViewController: UICollectionViewController {
     func showAlert(_ title:String) {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .cancel)
-//        { _ in self.movieData = MovieInfo()}
-        
         alert.addAction(action)
         
         present(alert, animated: true)
         searchBar.text = ""
+    }
+    
+    func callRecentSearchList() {
+        let realm = try! Realm()
+        let task = realm.objects(RealmModel.self)
+        bookList.removeAll()
+        for item in task {
+            let authors = Array(item.authors)
+            let book = Book(thumbnail: item.thumbnail, title: item.title, authors: authors, publisher: item.publisher, contents: item.contents, datetime: item.datetime, sale_price: item.sale_price, url: item.url)
+            bookList.append(book)
+        }
     }
     
     func callRequest(query:String, page:Int) {
@@ -136,8 +151,6 @@ extension MainCollectionViewController: UISearchBarDelegate {
         bookList.removeAll()
         page = 1
         callRequest(query: searchText, page: page)
-
-        
     }
     
 }
@@ -151,18 +164,21 @@ extension MainCollectionViewController:UICollectionViewDataSourcePrefetching  {
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
+    
         return bookList.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.IDF, for: indexPath) as! MainCollectionViewCell
+        if searchBar.text == nil {
+            callRecentSearchList()
+        }
+        
         let row = bookList[indexPath.row]
         let index = indexPath.row
         cell.cellSet(row: row, index: index)
-        
         cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
-        
+
         return cell
     }
     
@@ -171,8 +187,16 @@ extension MainCollectionViewController:UICollectionViewDataSourcePrefetching  {
         guard let vc = sb.instantiateViewController(withIdentifier:DetailViewController.IDF ) as? DetailViewController else { return }
         
         let row = indexPath.row
-        vc.bookList = bookList[row]
+        let data = bookList[row]
+        vc.bookList = data
         
+        let realm = try! Realm()
+        let task = RealmModel(thumbnail: data.thumbnail, title: data.title, authors: data.authors, publisher: data.publisher, contents: data.contents, datetime: data.datetime, sale_price: data.sale_price, url: data.url, like: data.like, color: data.color)
+        
+        try! realm.write {
+            realm.add(task)
+            print("=====addObject", task)
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     
