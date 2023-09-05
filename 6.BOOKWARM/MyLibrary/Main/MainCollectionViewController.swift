@@ -12,7 +12,7 @@ import RealmSwift
 
 class MainCollectionViewController: UICollectionViewController {
     //MARK: - property
-  
+    
     var bookList:[Book] = [] {
         didSet {
             collectionView.reloadData()
@@ -127,7 +127,7 @@ class MainCollectionViewController: UICollectionViewController {
                 }
                 
                 self.collectionView.reloadData()
-
+                
             case .failure(let error):
                 print(error)
             }
@@ -164,7 +164,7 @@ extension MainCollectionViewController:UICollectionViewDataSourcePrefetching  {
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
+        
         return bookList.count
     }
     
@@ -178,7 +178,7 @@ extension MainCollectionViewController:UICollectionViewDataSourcePrefetching  {
         let index = indexPath.row
         cell.cellSet(row: row, index: index)
         cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
-
+        
         return cell
     }
     
@@ -190,13 +190,25 @@ extension MainCollectionViewController:UICollectionViewDataSourcePrefetching  {
         let data = bookList[row]
         vc.bookList = data
         
+        
         let realm = try! Realm()
         let task = RealmModel(thumbnail: data.thumbnail, title: data.title, authors: data.authors, publisher: data.publisher, contents: data.contents, datetime: data.datetime, sale_price: data.sale_price, url: data.url, like: data.like, color: data.color)
+        vc.id = task.bookId
         
         try! realm.write {
             realm.add(task)
             print("=====addObject", task)
+            
         }
+        if let url = URL(string: task.thumbnail), let data = try? Data(contentsOf: url ) {
+            
+            self.saveImageToDocumet(fileName: "\(task.bookId).jpg", image: UIImage(data: data)!)
+        }
+        vc.task = task
+        print("======",task)
+        
+        
+        
         navigationController?.pushViewController(vc, animated: true)
     }
     

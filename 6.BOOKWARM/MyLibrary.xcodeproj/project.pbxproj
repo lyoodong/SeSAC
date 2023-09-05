@@ -32,6 +32,8 @@
 		BEB8D73D2A83C9710095E23C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BEB8D73C2A83C9710095E23C /* Kingfisher */; };
 		BEB9A9DB2AA5BA1C005F6270 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = BEB9A9DA2AA5BA1C005F6270 /* Realm */; };
 		BEB9A9DD2AA5BA1C005F6270 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BEB9A9DC2AA5BA1C005F6270 /* RealmSwift */; };
+		BEB9AA5D2AA7264F005F6270 /* Ext + FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB9AA5C2AA7264F005F6270 /* Ext + FileManager.swift */; };
+		BEB9AA652AA72CDF005F6270 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BEB9AA642AA72CDF005F6270 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,7 @@
 		BE8507532A77AB2C009ADAD6 /* Ext + UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext + UIColor.swift"; sourceTree = "<group>"; };
 		BEB8D7312A83B87D0095E23C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		BEB8D7392A83C1760095E23C /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		BEB9AA5C2AA7264F005F6270 /* Ext + FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext + FileManager.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,7 @@
 				BEB8D73D2A83C9710095E23C /* Kingfisher in Frameworks */,
 				BEB8D7382A83C02F0095E23C /* SwiftyJSON in Frameworks */,
 				BEB9A9DB2AA5BA1C005F6270 /* Realm in Frameworks */,
+				BEB9AA652AA72CDF005F6270 /* SnapKit in Frameworks */,
 				BEB9A9DD2AA5BA1C005F6270 /* RealmSwift in Frameworks */,
 				BEB8D7352A83C0260095E23C /* Alamofire in Frameworks */,
 			);
@@ -136,6 +140,7 @@
 				BE85074A2A77A5E1009ADAD6 /* Search */,
 				BE4B03622A7A381A009285A3 /* LookAround */,
 				BE8507492A77A4A6009ADAD6 /* Main */,
+				BEB9AA5C2AA7264F005F6270 /* Ext + FileManager.swift */,
 			);
 			path = MyLibrary;
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 				BEB8D73C2A83C9710095E23C /* Kingfisher */,
 				BEB9A9DA2AA5BA1C005F6270 /* Realm */,
 				BEB9A9DC2AA5BA1C005F6270 /* RealmSwift */,
+				BEB9AA642AA72CDF005F6270 /* SnapKit */,
 			);
 			productName = MyLibrary;
 			productReference = BE85072C2A77A468009ADAD6 /* MyLibrary.app */;
@@ -239,6 +245,7 @@
 				BEB8D7362A83C02F0095E23C /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				BEB8D73B2A83C9710095E23C /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				BEB9A9D92AA5BA1C005F6270 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				BEB9AA632AA72CDF005F6270 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = BE85072D2A77A468009ADAD6 /* Products */;
 			projectDirPath = "";
@@ -280,6 +287,7 @@
 				BE8507322A77A468009ADAD6 /* SceneDelegate.swift in Sources */,
 				BEB8D73A2A83C1760095E23C /* APIKey.swift in Sources */,
 				BE4B03642A7A387F009285A3 /* LookAroundViewController.swift in Sources */,
+				BEB9AA5D2AA7264F005F6270 /* Ext + FileManager.swift in Sources */,
 				BE8507452A77A48B009ADAD6 /* MainCollectionViewCell.swift in Sources */,
 				BE8507512A77A8C7009ADAD6 /* MovieInfo.swift in Sources */,
 				BEB8D7322A83B87D0095E23C /* Book.swift in Sources */,
@@ -535,6 +543,14 @@
 				kind = branch;
 			};
 		};
+		BEB9AA632AA72CDF005F6270 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -562,6 +578,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BEB9A9D92AA5BA1C005F6270 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		BEB9AA642AA72CDF005F6270 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEB9AA632AA72CDF005F6270 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
