@@ -8,6 +8,7 @@ import Alamofire
 import SwiftyJSON
 import UIKit
 import RealmSwift
+import LDiOS
 
 
 class MainCollectionViewController: UICollectionViewController {
@@ -35,6 +36,8 @@ class MainCollectionViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         callRecentSearchList()
+        self.collectionView.reloadData()
+        LDRealm.shared.getRealmLocation()
     }
     
     @IBAction func searchButtonTapped(_ sender: UIBarButtonItem) {
@@ -94,7 +97,7 @@ class MainCollectionViewController: UICollectionViewController {
         bookList.removeAll()
         for item in task {
             let authors = Array(item.authors)
-            let book = Book(thumbnail: item.thumbnail, title: item.title, authors: authors, publisher: item.publisher, contents: item.contents, datetime: item.datetime, sale_price: item.sale_price, url: item.url)
+            let book = Book(thumbnail: item.thumbnail, title: item.booktitle, authors: authors, publisher: item.publisher, contents: item.contents, datetime: item.datetime, sale_price: item.sale_price, url: item.url)
             bookList.append(book)
         }
     }
@@ -190,25 +193,16 @@ extension MainCollectionViewController:UICollectionViewDataSourcePrefetching  {
         let data = bookList[row]
         vc.bookList = data
         
-        
-        let realm = try! Realm()
         let task = RealmModel(thumbnail: data.thumbnail, title: data.title, authors: data.authors, publisher: data.publisher, contents: data.contents, datetime: data.datetime, sale_price: data.sale_price, url: data.url, like: data.like, color: data.color)
         vc.id = task.bookId
         
-        try! realm.write {
-            realm.add(task)
-            print("=====addObject", task)
-            
-        }
+        LDRealm.shared.write(object: task, writetype: .add)
         if let url = URL(string: task.thumbnail), let data = try? Data(contentsOf: url ) {
             
             self.saveImageToDocumet(fileName: "\(task.bookId).jpg", image: UIImage(data: data)!)
         }
         vc.task = task
         print("======",task)
-        
-        
-        
         navigationController?.pushViewController(vc, animated: true)
     }
     

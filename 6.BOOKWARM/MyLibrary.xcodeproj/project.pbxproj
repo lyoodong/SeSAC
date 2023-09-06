@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE2DC7372AA8A66400F3BF74 /* LDRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2DC7362AA8A66400F3BF74 /* LDRealm.swift */; };
 		BE4B03642A7A387F009285A3 /* LookAroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4B03632A7A387F009285A3 /* LookAroundViewController.swift */; };
 		BE4B03672A7A3A5D009285A3 /* LookAroundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4B03652A7A3A5D009285A3 /* LookAroundTableViewCell.swift */; };
 		BE4B03682A7A3A5D009285A3 /* LookAroundTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE4B03662A7A3A5D009285A3 /* LookAroundTableViewCell.xib */; };
@@ -36,7 +37,21 @@
 		BEB9AA652AA72CDF005F6270 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BEB9AA642AA72CDF005F6270 /* SnapKit */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BE2DC7352AA8A3C000F3BF74 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		BE2DC7362AA8A66400F3BF74 /* LDRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDRealm.swift; sourceTree = "<group>"; };
 		BE4B03632A7A387F009285A3 /* LookAroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAroundViewController.swift; sourceTree = "<group>"; };
 		BE4B03652A7A3A5D009285A3 /* LookAroundTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAroundTableViewCell.swift; sourceTree = "<group>"; };
 		BE4B03662A7A3A5D009285A3 /* LookAroundTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LookAroundTableViewCell.xib; sourceTree = "<group>"; };
@@ -79,6 +94,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE2DC7322AA8A3C000F3BF74 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BE4B03622A7A381A009285A3 /* LookAround */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +136,7 @@
 				BEB8D7302A83B8690095E23C /* Model */,
 				BE8507522A77AB0E009ADAD6 /* Ext + */,
 				BE85072D2A77A468009ADAD6 /* Products */,
+				BE2DC7322AA8A3C000F3BF74 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,6 +164,7 @@
 				BE4B03622A7A381A009285A3 /* LookAround */,
 				BE8507492A77A4A6009ADAD6 /* Main */,
 				BEB9AA5C2AA7264F005F6270 /* Ext + FileManager.swift */,
+				BE2DC7362AA8A66400F3BF74 /* LDRealm.swift */,
 			);
 			path = MyLibrary;
 			sourceTree = "<group>";
@@ -198,6 +222,7 @@
 				BE8507282A77A468009ADAD6 /* Sources */,
 				BE8507292A77A468009ADAD6 /* Frameworks */,
 				BE85072A2A77A468009ADAD6 /* Resources */,
+				BE2DC7352AA8A3C000F3BF74 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -286,6 +311,7 @@
 				BE8507302A77A468009ADAD6 /* AppDelegate.swift in Sources */,
 				BE8507322A77A468009ADAD6 /* SceneDelegate.swift in Sources */,
 				BEB8D73A2A83C1760095E23C /* APIKey.swift in Sources */,
+				BE2DC7372AA8A66400F3BF74 /* LDRealm.swift in Sources */,
 				BE4B03642A7A387F009285A3 /* LookAroundViewController.swift in Sources */,
 				BEB9AA5D2AA7264F005F6270 /* Ext + FileManager.swift in Sources */,
 				BE8507452A77A48B009ADAD6 /* MainCollectionViewCell.swift in Sources */,

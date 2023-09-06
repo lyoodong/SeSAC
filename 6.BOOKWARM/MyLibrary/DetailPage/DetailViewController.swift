@@ -44,12 +44,8 @@ class DetailViewController: UIViewController {
     }
     
     @objc func deleteButtonClicked() {
-        
-        let realm = try! Realm()
-        try! realm.write {
-                   realm.delete(task!)
-               }
-        removeImageFromDocumet(fileName: "\(id).jpg")
+        LDRealm.shared.delete(object: task!)
+        removeImageFromDocumet(fileName: "\(id!).jpg")
     }
     
     @objc func modButtonClicked() {
