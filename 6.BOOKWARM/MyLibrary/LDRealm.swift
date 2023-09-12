@@ -23,9 +23,11 @@ protocol RealmDB {
 class LDRealm:RealmDB {
     static let shared = LDRealm()
     
-    init() {}
+    let realm:Realm
     
-    let realm = try! Realm()
+    init() {
+        realm = try! Realm()
+    }
     
     func getRealmLocation() {
         print("=====Realm 경로: ", realm.configuration.fileURL!)
