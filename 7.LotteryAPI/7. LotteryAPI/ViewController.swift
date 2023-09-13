@@ -50,7 +50,10 @@ class ViewController: UIViewController {
         AF.request(url, method: .get).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
+                
                 let json = JSON(value)
+                print(json)
+                
                 //일반 당첨번호 호출 후 배열에 추가
                 for item in 0...5 {
                     let drwNo = json["drwtNo\(item + 1)"].intValue
