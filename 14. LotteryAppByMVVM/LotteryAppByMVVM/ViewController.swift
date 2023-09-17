@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     let viewModel = ViewModel()
     
-    lazy var searchDrawNo:UITextField = {
+    lazy var searchDrawNo: UITextField = {
         let view = UITextField()
         view.placeholder = "회차를 선택해주세요."
         view.inputView = pickerView
@@ -20,14 +20,14 @@ class ViewController: UIViewController {
         return view
     }()
     
-    lazy var resultLabel:UILabel = {
+    lazy var resultLabel: UILabel = {
         let view = UILabel()
         view.numberOfLines = 2
         
         return view
     }()
     
-    lazy var pickerView:UIPickerView = {
+    lazy var pickerView: UIPickerView = {
         let view = UIPickerView()
         view.inputViewController?.isEditing = false
         
@@ -51,7 +51,6 @@ class ViewController: UIViewController {
             
             self.resultLabel.text = "당첨번호: \(numbers)\n보너스 번호:\(bonus)"
         }
-        
     }
     
     func addsubview() {
