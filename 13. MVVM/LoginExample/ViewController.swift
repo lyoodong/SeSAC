@@ -19,7 +19,6 @@ class ViewController: UIViewController {
         view.textColor = .white
         view.layer.cornerRadius = 5
         
-        
         return view
     }()
     
@@ -45,10 +44,10 @@ class ViewController: UIViewController {
         return view
     }()
     
-    lazy var phoneNumberTextField: UITextField = {
+    lazy var referralCodeTextField: UITextField = {
         let view = UITextField()
         view.backgroundColor = .mainGreen
-        view.placeholder = "전화번호"
+        view.placeholder = "추천 코드"
         view.textAlignment = .center
         view.textColor = .white
         view.layer.cornerRadius = 5
@@ -74,7 +73,7 @@ class ViewController: UIViewController {
         [idTextField,
          pwTextField,
          nickNameTextField,
-         phoneNumberTextField,
+         referralCodeTextField,
          confirmButton].forEach {
             view.addSubview($0)
         }
@@ -106,7 +105,7 @@ class ViewController: UIViewController {
             make.top.equalTo(pwTextField.snp.bottom).offset(spacing)
         }
         
-        phoneNumberTextField.snp.makeConstraints { make in
+        referralCodeTextField.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(view).inset(spacing)
             make.height.equalTo(50)
             make.top.equalTo(nickNameTextField.snp.bottom).offset(spacing)
@@ -115,7 +114,7 @@ class ViewController: UIViewController {
         confirmButton.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(view).inset(spacing)
             make.height.equalTo(50)
-            make.top.equalTo(phoneNumberTextField.snp.bottom).offset(spacing)
+            make.top.equalTo(referralCodeTextField.snp.bottom).offset(spacing)
         }
     }
     
@@ -132,8 +131,8 @@ class ViewController: UIViewController {
             self.nickNameTextField.text = result
         }
         
-        viewModel.phoneNumber.bind { result in
-            self.phoneNumberTextField.text = String(result)
+        viewModel.referralCode.bind { result in
+            self.referralCodeTextField.text = String(result)
         }
     }
     
@@ -141,41 +140,66 @@ class ViewController: UIViewController {
         idTextField.addTarget(self, action: #selector(idTextFieldChanged), for: .editingChanged)
         pwTextField.addTarget(self, action: #selector(pwTextFieldChanged), for: .editingChanged)
         nickNameTextField.addTarget(self, action: #selector(nicknameTextFieldChanged), for: .editingChanged)
-        phoneNumberTextField.addTarget(self, action: #selector(phoneNumberTextFieldChanged), for: .editingChanged)
+        referralCodeTextField.addTarget(self, action: #selector(phoneNumberTextFieldChanged), for: .editingChanged)
         confirmButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
     }
     
     @objc
     func idTextFieldChanged() {
         viewModel.id.value = idTextField.text ?? ""
-        viewModel.checkValidation()
     }
     
     @objc
     func pwTextFieldChanged() {
         viewModel.pw.value = pwTextField.text ?? ""
-        viewModel.checkValidation()
     }
     
     @objc
     func nicknameTextFieldChanged() {
         viewModel.nickname.value = nickNameTextField.text ?? ""
-        viewModel.checkValidation()
     }
     
     @objc
     func phoneNumberTextFieldChanged() {
-        viewModel.phoneNumber.value = phoneNumberTextField.text ?? ""
-        viewModel.checkValidation()
+        viewModel.referralCode.value = referralCodeTextField.text ?? ""
     }
     
     @objc
     func loginButtonClicked() {
+        showErrorMassage()
+
         viewModel.autoID {
             if self.viewModel.isValid.value == true {
                 print("로그인 성공")
             } else {
                 print("로그인 실패")
+            }
+        }
+    }
+    
+    func showAlert(title: String) {
+        let alert = UIAlertController(title: "로그인 실패!", message: title, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "확인", style: .cancel)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true)
+    }
+    
+    func showErrorMassage() {
+        do {
+            try viewModel.checkValidation()
+        } catch {
+            switch error {
+            case loginError.id:
+                showAlert(title: "아이디에는 반드시 @을 포함해주세요.")
+            case loginError.password:
+                showAlert(title: "비밀번호는 7자 이상 10자 이하로 입력해주세요.")
+            case loginError.nickname:
+                showAlert(title: "닉네임은 필수 입력입니다!")
+            case loginError.referralCode:
+                showAlert(title: "추천 코드는 6자 입니다.")
+            default:
+                print("알 수 없는 에러")
             }
         }
     }
