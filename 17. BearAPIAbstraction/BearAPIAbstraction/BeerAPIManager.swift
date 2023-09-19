@@ -8,12 +8,12 @@
 import Foundation
 import Alamofire
 
-class BeerAPIManager {
+final class BeerAPIManager {
     
     static let shared = BeerAPIManager()
     private init() { }
 
-    func getBeers(completion: @escaping ([Beer]) -> Void) {
+    func getBeers(completion: @escaping (Result<[Beer], BeerError>) -> Void) {
         
         let api = BeerAPI.getBeers
         
@@ -21,14 +21,16 @@ class BeerAPIManager {
             
             switch response.result {
             case .success(let value):
-                completion(value)
-            case .failure(let error):
-                print(error)
+                completion(.success(value))
+            case .failure(_ ):
+                let statusCode = response.response?.statusCode ?? 500
+                guard let error = BeerError(rawValue: statusCode) else { return }
+                completion(.failure(error))
             }
         }
     }
     
-    func getSingleBeer(id: String, completion: @escaping ([Beer]) -> Void) {
+    func getSingleBeer(id: String, completion: @escaping (Result<[Beer], BeerError>) -> Void) {
         
         let api = BeerAPI.getSingleBeer(id: id)
         
@@ -36,14 +38,16 @@ class BeerAPIManager {
             
             switch response.result {
             case .success(let value):
-                completion(value)
-            case .failure(let error):
-                print(error)
+                completion(.success(value))
+            case .failure(_ ):
+                let statusCode = response.response?.statusCode ?? 500
+                guard let error = BeerError(rawValue: statusCode) else { return }
+                completion(.failure(error))
             }
         }
     }
     
-    func getRandomBeer(completion: @escaping ([Beer]) -> Void) {
+    func getRandomBeer(completion: @escaping (Result<[Beer], BeerError>) -> Void) {
         
         let api = BeerAPI.getRandomBeer
         
@@ -51,9 +55,11 @@ class BeerAPIManager {
             
             switch response.result {
             case .success(let value):
-                completion(value)
-            case .failure(let error):
-                print(error)
+                completion(.success(value))
+            case .failure(_ ):
+                let statusCode = response.response?.statusCode ?? 500
+                guard let error = BeerError(rawValue: statusCode) else { return }
+                completion(.failure(error))
             }
         }
         

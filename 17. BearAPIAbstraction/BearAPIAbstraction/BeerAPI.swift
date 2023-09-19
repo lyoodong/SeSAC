@@ -29,3 +29,23 @@ enum BeerAPI {
     }
 
 }
+
+enum BeerError: Int, Error {
+    case unauthorized = 401
+    case permissionDenined = 403
+    case invaildServer = 500
+    case missingParameter = 400
+    
+    var errorDescription: String{
+        switch self {
+        case .unauthorized:
+            return "인증정보가 없습니다."
+        case .permissionDenined:
+            return "권한이 없습니다."
+        case .invaildServer:
+            return "서버 점검 중입니다"
+        case .missingParameter:
+            return "검색어를 입력해주세요."
+        }
+    }
+}
