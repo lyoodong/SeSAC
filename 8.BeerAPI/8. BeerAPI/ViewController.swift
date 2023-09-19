@@ -41,7 +41,7 @@ class ViewController: UIViewController {
                 let json = JSON(value)
                 print(json)
                 //맥주 이름, 사진, 설명, 도수 데이터 저장
-                let      = json[0]["name"].stringValue
+                let name = json[0]["name"].stringValue
                 let imageUrl = json[0]["image_url"].stringValue
                 let description = json[0]["description"].stringValue
                 let abv = json[0]["abv"].doubleValue

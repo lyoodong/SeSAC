@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class APIManager {
     
@@ -13,7 +14,7 @@ class APIManager {
     private init() { }
     
     func getBeers() {
-        
+        let url
     }
     
     func getSingleBeers() {
@@ -23,5 +24,6 @@ class APIManager {
     func getRandomBeers() {
         
     }
+
     
 }
