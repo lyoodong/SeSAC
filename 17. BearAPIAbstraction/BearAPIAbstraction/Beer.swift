@@ -7,42 +7,43 @@
 
 import Foundation
 
-//MARK: - Beer
 struct Beer: Codable {
-    let contributedBy, firstBrewed: String
+    let ph: Double?
     let method: Method
-    let ebc, ibu: Int
-    let brewersTips, name: String
-    let targetOg: Int
-    let ingredients: Ingredients
-    let foodPairing: [String]
-    let imageURL: String
-    let id, abv: Int
-    let boilVolume: BoilVolume
-    let tagline: String
-    let attenuationLevel, srm: Int
-    let ph: Double
-    let description: String
-    let targetFg: Int
+    let targetOg: Double
     let volume: BoilVolume
-
+    let targetFg: Int
+    let ibu, attenuationLevel: Double?
+    let firstBrewed, description: String?
+    let imageURL: String?
+    let srm: Double?
+    let name: String
+    let ebc: Int?
+    let tagline: String
+    let abv: Double
+    let brewersTips: String
+    let foodPairing: [String]
+    let contributedBy: String?
+    let boilVolume: BoilVolume
+    let ingredients: Ingredients
+    let id: Int
+    
     enum CodingKeys: String, CodingKey {
-        case contributedBy = "contributed_by"
-        case firstBrewed = "first_brewed"
-        case method, ebc, ibu
-        case brewersTips = "brewers_tips"
-        case name
+        case ph, method
         case targetOg = "target_og"
-        case ingredients
-        case foodPairing = "food_pairing"
-        case imageURL = "image_url"
-        case id, abv
-        case boilVolume = "boil_volume"
-        case tagline
-        case attenuationLevel = "attenuation_level"
-        case srm, ph, description
-        case targetFg = "target_fg"
         case volume
+        case attenuationLevel = "attenuation_level"
+        case ibu
+        case targetFg = "target_fg"
+        case firstBrewed = "first_brewed"
+        case description
+        case imageURL = "image_url"
+        case srm, name, ebc, tagline, abv
+        case brewersTips = "brewers_tips"
+        case foodPairing = "food_pairing"
+        case contributedBy = "contributed_by"
+        case boilVolume = "boil_volume"
+        case ingredients, id
     }
 }
 
@@ -54,16 +55,15 @@ struct BoilVolume: Codable {
 
 // MARK: - Ingredients
 struct Ingredients: Codable {
-    let malt: [Malt]
     let yeast: String
     let hops: [Hop]
+    let malt: [Malt]
 }
 
 // MARK: - Hop
 struct Hop: Codable {
-    let add: String
+    let attribute, name, add: String
     let amount: BoilVolume
-    let attribute, name: String
 }
 
 // MARK: - Malt
@@ -74,14 +74,13 @@ struct Malt: Codable {
 
 // MARK: - Method
 struct Method: Codable {
-    let twist: String
     let mashTemp: [MashTemp]
+    let twist: String?
     let fermentation: Fermentation
-
+    
     enum CodingKeys: String, CodingKey {
-        case twist
         case mashTemp = "mash_temp"
-        case fermentation
+        case twist, fermentation
     }
 }
 
@@ -93,5 +92,5 @@ struct Fermentation: Codable {
 // MARK: - MashTemp
 struct MashTemp: Codable {
     let temp: BoilVolume
-    let duration: Int
+    let duration: Int?
 }
