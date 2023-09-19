@@ -9,21 +9,21 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let api = APIManager.shared
+    let api = BeerAPIManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         api.getBeers { result in
-            print("1. api.getBeers", result)
+            print("1. api.getBeer", result)
         }
         
-        api.getRandomBeers { result in
-            print("2. api.getRandomBeers", result)
+        api.getRandomBeer { result in
+            print("2. api.getRandomBeer", result)
         }
         
-        api.getSingleBeers(id: "22") { result in
-            print("3. api.getSingleBeers", result)
+        api.getSingleBeer(id: "22") { result in
+            print("3. api.getSingleBeer", result)
         }
     }
     

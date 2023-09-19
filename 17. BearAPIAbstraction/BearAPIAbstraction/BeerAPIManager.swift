@@ -8,9 +8,9 @@
 import Foundation
 import Alamofire
 
-class APIManager {
+class BeerAPIManager {
     
-    static let shared = APIManager()
+    static let shared = BeerAPIManager()
     private init() { }
     
     func getBeers(completion: @escaping ([Beer]) -> Void) {
@@ -28,7 +28,7 @@ class APIManager {
         }
     }
     
-    func getSingleBeers(id: String, completion: @escaping ([Beer]) -> Void) {
+    func getSingleBeer(id: String, completion: @escaping ([Beer]) -> Void) {
         
         let url = "https://api.punkapi.com/v2/beers/\(id)"
         
@@ -43,7 +43,7 @@ class APIManager {
         }
     }
     
-    func getRandomBeers(completion: @escaping ([Beer]) -> Void) {
+    func getRandomBeer(completion: @escaping ([Beer]) -> Void) {
         
         let url = "https://api.punkapi.com/v2/beers/random"
         
