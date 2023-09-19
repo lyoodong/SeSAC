@@ -62,6 +62,5 @@ final class BeerAPIManager {
                 completion(.failure(error))
             }
         }
-        
     }
 }

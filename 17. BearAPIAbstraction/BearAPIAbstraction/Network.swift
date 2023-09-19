@@ -16,7 +16,7 @@ class Network{
     func request<T: Decodable>(type: T.Type, api:BeerAPI, completion:@escaping (Result<T, BeerError>)-> Void) {
         
         AF.request(api.endPoint, method: .get).responseDecodable(of: type.self) { response in
-            
+    
             switch response.result {
             case .success(let value):
                 completion(.success(value))
