@@ -52,13 +52,18 @@ class BeerViewController: UIViewController {
     }
     
     func addSubViews() {
-        view.addSubview(beerImage)
+        view.addSubview(scrollView)
+        scrollView.addSubview(beerImage)
     }
     
     func constraints() {
-        beerImage.snp.makeConstraints {
+        scrollView.snp.makeConstraints {
             $0.center.equalTo(view)
             $0.size.equalTo(300)
+        }
+        
+        beerImage.snp.makeConstraints {
+            $0.edges.equalTo(scrollView)
         }
     }
 
