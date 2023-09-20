@@ -19,6 +19,7 @@
 		BEBADD4F2ABAB7F900949B57 /* BeerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBADD4E2ABAB7F900949B57 /* BeerViewController.swift */; };
 		BEBADD522ABAB85800949B57 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BEBADD512ABAB85800949B57 /* SnapKit */; };
 		BEBADD552ABAB86000949B57 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BEBADD542ABAB86000949B57 /* Kingfisher */; };
+		BEBADD772ABAFEB900949B57 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBADD762ABAFEB900949B57 /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		BEBADD462AB9EA5200949B57 /* BeerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerAPI.swift; sourceTree = "<group>"; };
 		BEBADD482AB9EE6A00949B57 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		BEBADD4E2ABAB7F900949B57 /* BeerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewController.swift; sourceTree = "<group>"; };
+		BEBADD762ABAFEB900949B57 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				BEBADD2D2AB9DB5200949B57 /* SceneDelegate.swift */,
 				BEBADD2F2AB9DB5200949B57 /* ViewController.swift */,
 				BEBADD462AB9EA5200949B57 /* BeerAPI.swift */,
+				BEBADD762ABAFEB900949B57 /* Router.swift */,
 				BEBADD3F2AB9DBF600949B57 /* BeerAPIManager.swift */,
 				BEBADD482AB9EE6A00949B57 /* Network.swift */,
 				BEBADD342AB9DB5300949B57 /* Assets.xcassets */,
@@ -165,6 +168,7 @@
 				BEBADD402AB9DBF600949B57 /* BeerAPIManager.swift in Sources */,
 				BEBADD302AB9DB5200949B57 /* ViewController.swift in Sources */,
 				BEBADD472AB9EA5200949B57 /* BeerAPI.swift in Sources */,
+				BEBADD772ABAFEB900949B57 /* Router.swift in Sources */,
 				BEBADD452AB9E04200949B57 /* Beer.swift in Sources */,
 				BEBADD2C2AB9DB5200949B57 /* AppDelegate.swift in Sources */,
 				BEBADD2E2AB9DB5200949B57 /* SceneDelegate.swift in Sources */,

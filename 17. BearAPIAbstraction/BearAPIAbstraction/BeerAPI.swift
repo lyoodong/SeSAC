@@ -24,11 +24,12 @@ enum BeerAPI {
         case .getRandomBeer:
             return BaseURL + "/random"
         case .getSingleBeer(let id):
-            return BaseURL + id
+            return BaseURL + "/\(id)"
         }
     }
 
 }
+
 
 enum BeerError: Int, Error {
     case unauthorized = 401

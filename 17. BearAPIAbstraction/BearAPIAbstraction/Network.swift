@@ -27,4 +27,19 @@ class Network{
             }
         }
     }
+    
+    func requestRouter<T: Decodable>(type: T.Type, api: Router, completion: @escaping (Result<T, BeerError>)-> Void) {
+        
+        AF.request(api).responseDecodable(of: type.self) { response in
+    
+            switch response.result {
+            case .success(let value):
+                completion(.success(value))
+            case .failure(_ ):
+                let statusCode = response.response?.statusCode ?? 500
+                guard let error = BeerError(rawValue: statusCode) else { return }
+                completion(.failure(error))
+            }
+        }
+    }
 }
