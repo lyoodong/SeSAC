@@ -22,20 +22,25 @@ class BeerViewController: UIViewController {
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.minimumZoomScale = 1 //최소 확대
-        view.maximumZoomScale = 6 //최대 확대
+        view.maximumZoomScale = 2 //최대 확대
+        view.bouncesZoom = true
+        view.showsHorizontalScrollIndicator = false
         view.delegate = self
         return view
     }()
-    
-    let api = Network.shared
+
+    let viewModel = BeerViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         addSubViews()
         constraints()
-        request()
         configureGesture()
+        
+        viewModel.request { URL in
+            self.beerImage.kf.setImage(with: URL)
+        }
     }
     
     func addSubViews() {
@@ -46,25 +51,12 @@ class BeerViewController: UIViewController {
     func constraints() {
         scrollView.snp.makeConstraints {
             $0.center.equalTo(view)
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
+            $0.size.equalTo(400)
         }
         
         beerImage.snp.makeConstraints {
             $0.edges.equalTo(scrollView)
             $0.centerX.equalTo(view)
-        }
-    }
-    
-    func request() {
-        api.request(type: [Beer].self, api: .getRandomBeer) { response in
-            switch response {
-            case .success(let value):
-                guard let url = URL(string: value[0].imageURL ?? "" ) else { return }
-                self.beerImage.kf.setImage(with: url)
-                
-            case.failure(let error):
-                print(error)
-            }
         }
     }
     
@@ -80,7 +72,7 @@ class BeerViewController: UIViewController {
         let scale = scrollView.zoomScale
         
         if scale == 1 {
-            scrollView.setZoomScale(6, animated: true)
+            scrollView.setZoomScale(2, animated: true)
         } else {
             scrollView.setZoomScale(1, animated: true)
         }

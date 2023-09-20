@@ -20,6 +20,7 @@
 		BEBADD522ABAB85800949B57 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BEBADD512ABAB85800949B57 /* SnapKit */; };
 		BEBADD552ABAB86000949B57 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BEBADD542ABAB86000949B57 /* Kingfisher */; };
 		BEBADD772ABAFEB900949B57 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBADD762ABAFEB900949B57 /* Router.swift */; };
+		BEBADD792ABB045100949B57 /* BeerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBADD782ABB045100949B57 /* BeerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		BEBADD482AB9EE6A00949B57 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		BEBADD4E2ABAB7F900949B57 /* BeerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewController.swift; sourceTree = "<group>"; };
 		BEBADD762ABAFEB900949B57 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		BEBADD782ABB045100949B57 /* BeerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				BEBADD392AB9DB5300949B57 /* Info.plist */,
 				BEBADD442AB9E04200949B57 /* Beer.swift */,
 				BEBADD4E2ABAB7F900949B57 /* BeerViewController.swift */,
+				BEBADD782ABB045100949B57 /* BeerViewModel.swift */,
 			);
 			path = BearAPIAbstraction;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				BEBADD472AB9EA5200949B57 /* BeerAPI.swift in Sources */,
 				BEBADD772ABAFEB900949B57 /* Router.swift in Sources */,
 				BEBADD452AB9E04200949B57 /* Beer.swift in Sources */,
+				BEBADD792ABB045100949B57 /* BeerViewModel.swift in Sources */,
 				BEBADD2C2AB9DB5200949B57 /* AppDelegate.swift in Sources */,
 				BEBADD2E2AB9DB5200949B57 /* SceneDelegate.swift in Sources */,
 				BEBADD492AB9EE6A00949B57 /* Network.swift in Sources */,
