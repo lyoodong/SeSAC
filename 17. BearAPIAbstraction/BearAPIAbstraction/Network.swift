@@ -10,10 +10,10 @@ import Alamofire
 
 class Network{
     
-    private static let shared = Network()
+    static let shared = Network()
     private init() { }
 
-    func request<T: Decodable>(type: T.Type, api:BeerAPI, completion:@escaping (Result<T, BeerError>)-> Void) {
+    func request<T: Decodable>(type: T.Type, api: BeerAPI, completion: @escaping (Result<T, BeerError>)-> Void) {
         
         AF.request(api.endPoint, method: .get).responseDecodable(of: type.self) { response in
     
