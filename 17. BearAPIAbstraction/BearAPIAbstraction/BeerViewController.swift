@@ -11,11 +11,20 @@ import Kingfisher
 
 class BeerViewController: UIViewController {
     
-    lazy var beerImage:UIImageView = {
+    private lazy var beerImage: UIImageView = {
         let view = UIImageView()
         view.isUserInteractionEnabled = true //제스처를 위한 허용
         view.backgroundColor = .green
+        view.contentMode = .scaleAspectFit
         
+        return view
+    }()
+    
+    private lazy var scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.minimumZoomScale = 1 //최소 확대
+        view.maximumZoomScale = 6 //최대 확대
+        view.delegate = self
         return view
     }()
     
@@ -55,3 +64,9 @@ class BeerViewController: UIViewController {
 
 }
 
+extension BeerViewController: UIScrollViewDelegate {
+    //확대할 view를 리턴
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return beerImage
+    }
+}
