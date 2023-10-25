@@ -19,7 +19,6 @@ class ViewModel {
         APIManager.shared.callRequest(num: num) { Result in
             self.list.value = Result
         }
-
     }
     
     func selectedLottoNum(row: Int) -> Int {
